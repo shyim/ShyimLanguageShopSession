@@ -16,6 +16,7 @@ class CartSubscriber implements SubscriberInterface
      * @var Connection
      */
     private $connection;
+
     /**
      * @var ContextServiceInterface
      */
@@ -54,7 +55,7 @@ class CartSubscriber implements SubscriberInterface
 
         $id = $args->get('id');
 
-        $productId = (int) $this->connection->fetchColumn('SELECT articleID FROM s_order_basket WHERE id = ? AND modus = 0');
+        $productId = (int) $this->connection->fetchColumn('SELECT articleID FROM s_order_basket WHERE id = ? AND modus = 0', [$id]);
 
         if ($productId) {
             $hasCategories = (bool) $this->connection->fetchColumn('SELECT 1 FROM s_articles_categories_ro WHERE articleID = ? AND categoryID = ?', [
