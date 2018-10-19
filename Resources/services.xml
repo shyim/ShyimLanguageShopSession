@@ -6,5 +6,11 @@
         <service id="shyim_language_shop_session.components.session_factory"
                  class="ShyimLanguageShopSession\Components\SessionFactory" decorates="session_factory">
         </service>
+
+        <service id="shyim_language_shop_session.subscriber.cart_subscriber" class="ShyimLanguageShopSession\Subscriber\CartSubscriber">
+            <argument type="service" id="dbal_connection"/>
+            <argument type="service" id="shopware_storefront.context_service"/>
+            <tag name="shopware.event_subscriber"/>
+        </service>
     </services>
 </container>
