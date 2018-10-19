@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.4/engine/Shopware/Components/Plugin/schema/plugin.xsd">
+
+    <label lang="de">Browser Sitzung zwischen Sprachshops teilen</label>
+    <label lang="en">Share browser session between language shops</label>
+    <version>1.0.0</version>
+
+    <copyright>Shyim</copyright>
+    <license>MIT</license>
+    <link>https://github.com/shyim/ShyimLanguageShopSession</link>
+    <author>Shyim</author>
+    <compatibility minVersion="5.4.0"/>
+</plugin>
