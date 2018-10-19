@@ -54,15 +54,19 @@ class CartSubscriber implements SubscriberInterface
 
         $id = $args->get('id');
 
-        $hasCategories = (bool) $this->connection->fetchColumn('SELECT 1 FROM s_articles_categories_ro WHERE articleID = (SELECT articleID FROM s_order_basket WHERE id = ?) AND categoryID = ?', [
-            $id,
-            $this->contextService->getShopContext()->getShop()->getCategory()->getId(),
-        ]);
+        $productId = (int) $this->connection->fetchColumn('SELECT articleID FROM s_order_basket WHERE id = ? AND modus = 0');
 
-        if (!$hasCategories) {
-            $subject->sDeleteArticle($id);
+        if ($productId) {
+            $hasCategories = (bool) $this->connection->fetchColumn('SELECT 1 FROM s_articles_categories_ro WHERE articleID = ? AND categoryID = ?', [
+                $productId,
+                $this->contextService->getShopContext()->getShop()->getCategory()->getId(),
+            ]);
 
-            return true;
+            if (!$hasCategories) {
+                $subject->sDeleteArticle($id);
+
+                return true;
+            }
         }
     }
 }
