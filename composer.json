@@ -1,0 +1,14 @@
+{
+    "name": "shyim/language-shop-session",
+    "keywords": ["shopware", "language", "shop", "session"],
+    "description": "Share Session between Language Shops",
+    "license": "MIT",
+    "type": "shopware-plugin",
+    "extra": {
+        "installer-name": "ShyimLanguageShopSession"
+    },
+    "require": {
+        "php": ">=5.6.4",
+        "composer/installers": "~1.0"
+    }
+}
